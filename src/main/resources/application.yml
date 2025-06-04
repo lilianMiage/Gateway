@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #activation eureka locator
+          lowerCaseServiceId: true
+      # Configuration des routes de l'API Gateway
+      routes:
+        #Service UTILISATEUR
+        - id: UTILISATEUR
+          uri: lb://UTILISATEUR/ #Attention : lb et pas HTTP. Lb est prêt pour faire du load-balancing
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - RewritePath=/api/user(?<segment>/?.*), /$\{segment}
+        #Service ACCESSCARD
+        - id: ACCESSCARD
+          uri: lb://ACCESSCARD/
+          predicates:
+            - Path=/api/accessCard/**
+          filters:
+            - RewritePath=/api/accessCard(?<segment>/?.*), /$\{segment}
+        #Service
+        - id: STATION
+          uri: lb://station/
+          predicates:
+            - Path=/api/station/**
+          filters:
+            - RewritePath=/api/accessCard(?<segment>/?.*), /$\{segment}
+      enabled: on # Activation gateway
+    # Activation remontée management dans Eureka
+    config:
+      service-registry:
+        auto-registration:
+          register-management: on
+logging:
+  level:
+    org.springframework.web: DEBUG

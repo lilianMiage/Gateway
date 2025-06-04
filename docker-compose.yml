@@ -1,0 +1,13 @@
+services:
+  spring_app:
+    container_name: APIGateway
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8095:8095"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
