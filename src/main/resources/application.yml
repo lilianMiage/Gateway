@@ -12,22 +12,21 @@ spring:
           uri: lb://UTILISATEUR/ #Attention : lb et pas HTTP. Lb est prêt pour faire du load-balancing
           predicates:
             - Path=/api/user/**
-          filters:
-            - RewritePath=/api/user(?<segment>/?.*), /$\{segment}
         #Service ACCESSCARD
         - id: ACCESSCARD
           uri: lb://ACCESSCARD/
           predicates:
             - Path=/api/accessCard/**
-          filters:
-            - RewritePath=/api/accessCard(?<segment>/?.*), /$\{segment}
-        #Service
+        #Service station
         - id: STATION
-          uri: lb://station/
+          uri: lb://STATION/
           predicates:
             - Path=/api/station/**
-          filters:
-            - RewritePath=/api/accessCard(?<segment>/?.*), /$\{segment}
+        #Service voiture
+        - id: GESTIONVOITURE
+          uri: lb://GESTIONVOITURE/
+          predicates:
+            - Path=/api/car/**
       enabled: on # Activation gateway
     # Activation remontée management dans Eureka
     config:
