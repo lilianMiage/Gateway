@@ -17,6 +17,11 @@ spring:
           uri: lb://ACCESSCARD/
           predicates:
             - Path=/api/accessCard/**
+        #Service COMPOSITE-USERACCESSCARD
+        - id: COMPOSITE-USERACCESSCARD
+          uri: lb://COMPOSITE-USERACCESSCARD/
+          predicates:
+            - Path=/api/userAccess/**
         #Service station
         - id: STATION
           uri: lb://STATION/
