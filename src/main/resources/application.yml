@@ -27,9 +27,9 @@ spring:
           uri: lb://STATION/
           predicates:
             - Path=/api/station/**
-        #Service voiture
-        - id: GESTIONVOITURE
-          uri: lb://GESTIONVOITURE/
+        #Service car
+        - id: CAR
+          uri: lb://CAR/
           predicates:
             - Path=/api/car/**
       enabled: on # Activation gateway
