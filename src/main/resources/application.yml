@@ -32,6 +32,11 @@ spring:
           uri: lb://CAR/
           predicates:
             - Path=/api/car/**
+        #Service Location
+        - id: LOCATION
+          uri: lb://LOCATION/
+          predicates:
+            - Path=/api/location/**
       enabled: on # Activation gateway
     # Activation remontée management dans Eureka
     config:
