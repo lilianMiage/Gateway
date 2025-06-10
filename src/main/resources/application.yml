@@ -37,6 +37,11 @@ spring:
           uri: lb://LOCATION/
           predicates:
             - Path=/api/location/**
+        #Service composite-Location
+        - id: COMPOSITE-LOCATION
+          uri: lb://COMPOSITE-LOCATION/
+          predicates:
+            - Path=/api/Clocation/**
       enabled: on # Activation gateway
     # Activation remontée management dans Eureka
     config:
