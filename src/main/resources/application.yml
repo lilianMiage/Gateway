@@ -47,6 +47,11 @@ spring:
           uri: lb://COMPOSITE-STATIONVOITURE/
           predicates:
             - Path=/api/stationCar/**
+        #Service STATISTIQUE
+        - id: STATISTIQUE
+          uri: lb://STATISTIQUE/
+          predicates:
+            - Path=/api/statistique/**
       enabled: on # Activation gateway
     # Activation remontée management dans Eureka
     config:
